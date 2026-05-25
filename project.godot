@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="ME Ripoff"
+run/main_scene="uid://cas0xncmv1w4t"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+run/max_fps=120
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=1200
+window/size/sharp_corners=true
+window/vsync/vsync_mode=0
 
 [dotnet]
 

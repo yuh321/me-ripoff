@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://culcbw6onfwsd"]
+
+[ext_resource type="Material" uid="uid://cbd5mg1xrbkfp" path="res://CheckerTile.material" id="1_jy3yd"]
+[ext_resource type="PackedScene" uid="uid://dnu4bd2j2emul" path="res://Player/Player.tscn" id="2_6l4mb"]
+
+[sub_resource type="Environment" id="Environment_sxfj2"]
+
+[node name="TestMap" type="Node3D" unique_id=1264629744]
+
+[node name="Player" parent="." unique_id=600655978 instance=ExtResource("2_6l4mb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Environment" type="Node3D" parent="." unique_id=1678562832]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1110990164]
+environment = SubResource("Environment_sxfj2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=913033720]
+
+[node name="Geometry" type="Node3D" parent="." unique_id=1764367023]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Geometry" unique_id=1588703536]
+material_override = ExtResource("1_jy3yd")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry/CSGCombiner3D" unique_id=806158862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0)
+size = Vector3(6, 0.25, 6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry/CSGCombiner3D" unique_id=1191886703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 1.5)
+size = Vector3(1, 2, 1)
