@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dnu4bd2j2emul"]
 
 [ext_resource type="Script" uid="uid://ihh2ppitm38b" path="res://Player/Script_Player.gd" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://byggqpkosru7h" path="res://Player/Script_PlayerController.gd" id="2_q3lat"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q3lat"]
+friction = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3qydi"]
 radius = 0.15
@@ -8,10 +12,14 @@ height = 1.65
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_3qydi"]
 radius = 0.15
-height = 1.6
+height = 1.65
 
-[node name="Player" type="RigidBody3D" unique_id=600655978]
+[node name="Player" type="RigidBody3D" unique_id=600655978 node_paths=PackedStringArray("head")]
+physics_material_override = SubResource("PhysicsMaterial_q3lat")
+can_sleep = false
+lock_rotation = true
 script = ExtResource("1_3qydi")
+head = NodePath("Head")
 metadata/_custom_type_script = "uid://ihh2ppitm38b"
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=1019225496]
@@ -19,3 +27,14 @@ shape = SubResource("CapsuleShape3D_3qydi")
 
 [node name="SillyCapsule" type="MeshInstance3D" parent="." unique_id=1696537246]
 mesh = SubResource("CapsuleMesh_3qydi")
+
+[node name="Head" type="Node3D" parent="." unique_id=1636046221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera" type="Camera3D" parent="Head" unique_id=1697603041]
+far = 2000.0
+
+[node name="PlayerController" type="Node" parent="." unique_id=1998434871 node_paths=PackedStringArray("target")]
+script = ExtResource("2_q3lat")
+target = NodePath("..")
+metadata/_custom_type_script = "uid://byggqpkosru7h"
