@@ -15,15 +15,16 @@ func _physics_process(_delta: float) -> void:
 	update_grounded_state()
 
 func accelerate(controller_input : Vector2) -> void:
-	if !grounded: return
-	
 	var input : Vector3 = Vector3(controller_input.x, 0.0, controller_input.y)
 	input *= movement_speed
-	if !input:
-		input = -linear_velocity * friction_multiplier
+	if !input and grounded:
+		input = -linear_velocity
 		input.y = 0.0
 	
-	linear_velocity += input
+	# Apply Input
+	linear_velocity += input * friction_multiplier
+	
+	# Remove Excess Speed
 	if linear_velocity.length() > movement_speed:
 		var overspeed : Vector3 = linear_velocity - (linear_velocity.normalized() * movement_speed)
 		overspeed.y = 0.0
