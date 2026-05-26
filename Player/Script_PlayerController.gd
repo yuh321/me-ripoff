@@ -12,6 +12,7 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	movement_input()
+	if Input.is_action_just_pressed("Jump"): target.jump()
 
 func movement_input() -> void:
 	target.accelerate(Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").rotated(-target.head.rotation.y))

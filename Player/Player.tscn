@@ -15,7 +15,9 @@ radius = 0.15
 height = 1.65
 
 [node name="Player" type="RigidBody3D" unique_id=600655978 node_paths=PackedStringArray("head")]
+mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_q3lat")
+gravity_scale = 1.2
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_3qydi")
